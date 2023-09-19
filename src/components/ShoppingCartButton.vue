@@ -1,6 +1,7 @@
 <template>
   <RouterLink to="/checkout" class="pl-3 inline-block no-underline hover:text-black">
-    <div class="ml-4 mb-8 absolute rounded-full w-3 h-3 bg-emerald-500 text-white"></div>
+    <div v-show="$store.getters['cart/itemsTotal'] > 0"
+      class="ml-4 mb-8 absolute rounded-full w-3 h-3 bg-indigo-500 text-white"></div>
 
     <svg class="fill-current hover:text-black" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
       viewBox="0 0 24 24">
