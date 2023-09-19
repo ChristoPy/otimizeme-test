@@ -1,10 +1,6 @@
+import type { CartItem } from "@/types/cart"
 import type { Product } from "@/types/product"
 import type { ActionTree, GetterTree } from "vuex"
-
-export interface CartItem {
-  product: Product
-  quantity: number
-}
 
 interface State {
   all: CartItem[]
@@ -40,6 +36,29 @@ const actions: ActionTree<RootState, RootState> = {
       product,
       quantity: 1,
     })
+  },
+  setQuantity(
+    { commit, state },
+    { product, quantity }: { product: Product; quantity: number }
+  ) {
+    if (product.quantity < quantity) {
+      return
+    }
+    if (quantity === 0) {
+      commit('REMOVE_ITEM', {
+        product,
+        quantity: 0,
+      })
+      return
+    }
+
+    commit('SET_QUANTITY', {
+      item: {
+        product,
+        quantity,
+      },
+      quantity,
+    })
   }
 }
 
@@ -52,6 +71,16 @@ const mutations = {
 
     if (index > -1) {
       state.all.splice(index, 1)
+    }
+  },
+  SET_QUANTITY(
+    state: RootState,
+    { item, quantity }: { item: CartItem; quantity: number }
+  ) {
+    const index = state.all.findIndex((i) => i.product._id === item.product._id)
+
+    if (index > -1) {
+      state.all[index].quantity = quantity
     }
   },
 }
