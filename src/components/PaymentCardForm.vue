@@ -10,8 +10,11 @@ import { onMounted } from 'vue';
 // it mutates a "global" variable that doesnt exists
 // so this is a patch to make it work
 onMounted(() => {
+  // @ts-ignore
   window.global = window
+  // @ts-ignore
   import("card").then(() => {
+  // @ts-ignore
     new window.Card({
       form: "form",
       container: ".card-wrapper",
