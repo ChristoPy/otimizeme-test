@@ -6,7 +6,9 @@ import Header from './components/Header.vue'
   <div id="app">
     <Header />
 
-    <router-view />
+    <section class="container mx-auto mt-12 pt-8 pb-12">
+      <router-view />
+    </section>
   </div>
 </template>
 
