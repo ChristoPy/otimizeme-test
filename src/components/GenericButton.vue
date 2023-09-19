@@ -1,7 +1,7 @@
 <script setup lang="ts">
 defineProps<{
   text: string
-  onClick: () => void
+  onClick?: () => void
   full?: boolean
 }>()
 </script>
