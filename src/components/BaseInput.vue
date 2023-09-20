@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue';
 
-const { value } = defineProps({
+const props = defineProps({
   label: String,
   type: String,
   id: String,
@@ -9,12 +9,10 @@ const { value } = defineProps({
   value: String,
 });
 
-const internalValue = ref(value);
+const internalValue = ref(props.value);
 const emit = defineEmits(['input']);
 
-watch(internalValue, (newVal) => {
-  emit('input', newVal);
-});
+watch(() => props.value, () => internalValue.value = props.value)
 
 function emitInput() {
   emit('input', internalValue.value);
