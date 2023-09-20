@@ -30,7 +30,8 @@ function emitInput() {
   <div class="w-full">
     <label class="block font-medium mb-2 w-full" :for="id">{{ label }}</label>
     <select :id="id" class="border border-gray-300 hover:border-gray-500 rounded h-10 px-2 mb-4 w-full"
-      @change="emitInput" v-model="selectedValue.id">
+      @change="emitInput" v-model="//@ts-ignore
+        selectedValue.id">
       <option value="">{{ placeholder }}</option>
       <option v-for="(option, index) in options" :key="option.id" :value="option.id">{{ option.name }}</option>
     </select>
