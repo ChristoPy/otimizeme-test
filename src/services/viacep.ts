@@ -28,7 +28,6 @@ export default async function maybeGetZipCode(zipCode: string): Promise<null | G
   const response = await fetch(`https://viacep.com.br/ws/${zipCode}/json/`)
 
   if (response.ok === false) {
-    console.log('----')
     return null
   }
 

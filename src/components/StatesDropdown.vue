@@ -15,7 +15,6 @@ const emit = defineEmits(['input']);
 
 watch(() => props.value, () => {
   internalValue.value = dropdownOptions.value.find(({ id }) => id === props.value)!
-  console.log(props.value, internalValue.value)
 })
 
 function emitInput() {
