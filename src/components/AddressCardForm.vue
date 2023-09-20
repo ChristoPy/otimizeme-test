@@ -37,7 +37,7 @@ watch(() => formData.zipCode, async () => {
     formData.complement = result.complement
   }
   if (result.neighborhood) {
-    formData.complement = result.neighborhood
+    formData.neighborhood = result.neighborhood
   }
 })
 </script>
