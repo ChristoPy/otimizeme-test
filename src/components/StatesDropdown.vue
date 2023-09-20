@@ -1,18 +1,29 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import type { DropdownOption } from '@/types/shared'
+import { ref, watch } from 'vue';
 import { STATES } from '@/constants'
+
 import Dropdown from './Dropdown.vue';
-import type { State } from '@/constants'
+
+const props = defineProps({
+  value: String,
+});
 
 const dropdownOptions = ref(STATES);
-let selectedValue = ref<State>(STATES[0]);
+let internalValue = ref<DropdownOption>(STATES[0]);
+const emit = defineEmits(['input']);
 
-const handleDropdownChange = (value: State) => {
-  selectedValue.value = value;
-};
+watch(() => props.value, () => {
+  internalValue.value = dropdownOptions.value.find(({ id }) => id === props.value)!
+  console.log(props.value, internalValue.value)
+})
+
+function emitInput() {
+  emit('input', internalValue.value.id);
+}
 </script>
 
 <template>
-  <Dropdown id="state" label="Estado" :placeholder="selectedValue.name" :options="dropdownOptions"
-    :onChange="handleDropdownChange" />
+  <Dropdown id="state" label="Estado" :placeholder="internalValue.name" :options="dropdownOptions" v-model="internalValue"
+    @input="emitInput" />
 </template>

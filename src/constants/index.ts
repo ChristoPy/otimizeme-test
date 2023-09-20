@@ -1,9 +1,6 @@
-export interface State {
-  id: string
-  name: string
-}
+import type { DropdownOption } from '@/types/shared'
 
-export const STATES: State[] = [
+export const STATES: DropdownOption[] = [
   { id: 'AC', name: 'Acre' },
   { id: 'AL', name: 'Alagoas' },
   { id: 'AP', name: 'Amapá' },
