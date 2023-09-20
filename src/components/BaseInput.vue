@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue';
 
-const { modelValue } = defineProps({
+const { value } = defineProps({
   label: String,
   type: String,
   id: String,
   placeholder: String,
-  modelValue: String,
+  value: String,
 });
 
-const internalValue = ref(modelValue);
+const internalValue = ref(value);
 const emit = defineEmits(['input']);
 
 watch(internalValue, (newVal) => {
