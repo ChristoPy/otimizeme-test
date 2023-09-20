@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { formatMoney } from '@/utils/money'
 
-
 import Card from '@/components/Card.vue'
 import BaseInput from '@/components/BaseInput.vue'
+import MaskedInput from '@/components/MaskedInput.vue';
 import { onMounted } from 'vue';
 
 // Card import moved to here, since the packae has an error
@@ -44,7 +44,7 @@ onMounted(() => {
       <form id="form">
         <BaseInput id="cardNumber" label="Número do cartão" placeholder="Digite somente os números" type="tel" />
         <BaseInput id="name" label="Titular do cartão" placeholder="Digite o nome impresso no cartão" type="email" />
-        <BaseInput id="taxId" label="CPF/CNPJ do titular" placeholder="Para a emissão da nota fisal" type="tel" />
+        <MaskedInput id="taxId" label="CPF/CNPJ do titular" placeholder="Para a emissão da nota fisal" type="tel" :mask="['###.###.###-##', '##.###.###/####-##']" :maxLength="18"/>
 
         <div class="flex gap-4">
           <BaseInput id="expiry" label="Validade" placeholder="01/27" type="tel" />
