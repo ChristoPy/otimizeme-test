@@ -1,6 +1,17 @@
 <script setup lang="ts">
 import AddressCardForm from '@/components/AddressCardForm.vue';
 import PaymentCardForm from '@/components/PaymentCardForm.vue';
+import store from '@/store';
+import { onMounted } from 'vue';
+
+onMounted(() => {
+  window.addEventListener('blur', () => {
+    store.dispatch('checkout/changeWindow')
+  });
+  window.addEventListener('beforeunload', () => {
+    store.dispatch('checkout/closeWindow')
+  })
+})
 </script>
 
 <template>

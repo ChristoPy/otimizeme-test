@@ -120,7 +120,13 @@ const actions: ActionTree<RootState, RootState> = {
   },
   purchaseFail({ state }) {
     console.log('PurchaseFail', state)
-  }
+  },
+  changeWindow({ state }) {
+    console.log('ChangeWindow', state)
+  },
+  closeWindow({ state }) {
+    console.log('CloseWindow', state)
+  },
 }
 
 const mutations = {
