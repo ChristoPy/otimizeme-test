@@ -11,7 +11,6 @@ const formData = reactive({
   taxId: '',
   expiry: '',
   cvv: '',
-  installments: 0,
 });
 
 // Card import moved to here, since the packae has an error
