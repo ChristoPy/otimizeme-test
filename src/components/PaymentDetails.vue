@@ -9,6 +9,7 @@ const taxId = ref('')
 
 watch(taxId, () => {
   store.dispatch('checkout/setTaxId', taxId.value)
+  store.dispatch('checkout/addPaymentInfo')
 })
 </script>
 

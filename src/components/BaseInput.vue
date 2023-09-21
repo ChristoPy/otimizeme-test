@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue';
+import { ref, watch, type PropType } from 'vue';
 
 const props = defineProps({
   label: String,
@@ -7,7 +7,7 @@ const props = defineProps({
   id: String,
   placeholder: String,
   value: String,
-  focus?: Function
+  focus: Function as PropType<(payload: FocusEvent) => void>
 });
 
 const internalValue = ref(props.value);
@@ -25,6 +25,7 @@ function emitInput() {
     <label class="block font-medium mb-2 w-full" :for="id">{{ label }}</label>
     <input required :type="type || 'text'" :id="id" :placeholder="placeholder"
       class="border border-gray-300 hover:border-gray-500 rounded h-10 px-2 mb-4 w-full" v-model="internalValue"
-      @input="emitInput" @focus="focus" />
+      @input="emitInput" @focus="//@ts-ignore
+                                focus" />
   </div>
 </template>

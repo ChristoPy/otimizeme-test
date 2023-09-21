@@ -17,6 +17,7 @@ interface State {
   fillAddress: boolean,
   addToCart: boolean,
   initiateCheckout: boolean,
+  addPaymentInfo: boolean,
   shipping: {
     name: string
     email: string
@@ -90,19 +91,28 @@ const actions: ActionTree<RootState, RootState> = {
   setTaxId({ state, commit}, total: number) {
     commit('SET_TAX_ID', total)
   },
-  fillAddress({state}) {
+  fillAddress({state, commit}) {
     if (!state.fillAddress) {
       console.log('FillAddress', state)
+      commit('SET_FLAG', 'fillAddress')
     }
   },
-  addToCart({state}) {
+  addToCart({state, commit}) {
     if (!state.addToCart) {
       console.log('FillAddress', state)
+      commit('SET_FLAG', 'addToCart')
     }
   },
-  initiateCheckout({state}) {
+  initiateCheckout({state, commit}) {
     if (!state.initiateCheckout) {
       console.log('InitiateCheckout', state)
+      commit('SET_FLAG', 'initiateCheckout')
+    }
+  },
+  addPaymentInfo({state, commit}) {
+    if (!state.addPaymentInfo) {
+      console.log('AddPaymentInfo', state)
+      commit('SET_FLAG', 'addPaymentInft')
     }
   }
 }
@@ -122,6 +132,9 @@ const mutations = {
   },
   SET_TAX_ID(state: RootState, taxId: string) {
     state.taxId = taxId;
+  },
+  SET_FLAG(state: RootState, flag: 'fillAddress' | 'initiateCheckout' | 'addToCart' | 'addPaymentInfo') {
+    state[flag] = true;
   }
 }
 
