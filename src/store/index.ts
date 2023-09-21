@@ -12,6 +12,7 @@ const debug = import.meta.env.NODE_ENV !== 'production'
 export default new Vuex.Store({
   modules: {
     cart,
+    // @ts-ignore
     checkout,
     products
   },
