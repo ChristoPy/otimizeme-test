@@ -13,6 +13,10 @@ interface Card {
 
 interface State {
   total: number,
+  taxId: string,
+  fillAddress: boolean,
+  addToCart: boolean,
+  initiateCheckout: boolean,
   shipping: {
     name: string
     email: string
@@ -34,6 +38,10 @@ interface State {
 export const state = () =>
 ({
   total: 0,
+  taxId: '',
+  fillAddress: false,
+  addToCart: false,
+  initiateCheckout: false,
   shipping: {
     name: '',
     email: '',
@@ -78,6 +86,24 @@ const actions: ActionTree<RootState, RootState> = {
   },
   setTotalPrice({ state, commit}, total: number) {
     commit('SET_TOTAL_PRICE', total)
+  },
+  setTaxId({ state, commit}, total: number) {
+    commit('SET_TAX_ID', total)
+  },
+  fillAddress({state}) {
+    if (!state.fillAddress) {
+      console.log('FillAddress', state)
+    }
+  },
+  addToCart({state}) {
+    if (!state.addToCart) {
+      console.log('FillAddress', state)
+    }
+  },
+  initiateCheckout({state}) {
+    if (!state.initiateCheckout) {
+      console.log('InitiateCheckout', state)
+    }
   }
 }
 
@@ -93,6 +119,9 @@ const mutations = {
   },
   SET_TOTAL_PRICE(state: RootState, total: number) {
     state.total = total;
+  },
+  SET_TAX_ID(state: RootState, taxId: string) {
+    state.taxId = taxId;
   }
 }
 

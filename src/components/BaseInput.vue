@@ -7,6 +7,7 @@ const props = defineProps({
   id: String,
   placeholder: String,
   value: String,
+  focus?: Function
 });
 
 const internalValue = ref(props.value);
@@ -24,6 +25,6 @@ function emitInput() {
     <label class="block font-medium mb-2 w-full" :for="id">{{ label }}</label>
     <input required :type="type || 'text'" :id="id" :placeholder="placeholder"
       class="border border-gray-300 hover:border-gray-500 rounded h-10 px-2 mb-4 w-full" v-model="internalValue"
-      @input="emitInput" />
+      @input="emitInput" @focus="focus" />
   </div>
 </template>

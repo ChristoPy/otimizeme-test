@@ -5,6 +5,7 @@ import PaymentMethodOptions from './PaymentMethodOptions.vue';
 import SecurityNotice from './SecurityNotice.vue';
 import PixPaymentForm from './PixPaymentForm.vue';
 import BoletoPaymentForm from './BoletoPaymentForm.vue';
+import PaymentDetails from './PaymentDetails.vue';
 </script>
 
 <template>
@@ -13,6 +14,7 @@ import BoletoPaymentForm from './BoletoPaymentForm.vue';
     <CreditCardPaymentForm v-if="$store.getters['checkout/paymentMethod'] === 'credit-card'" />
     <PixPaymentForm v-if="$store.getters['checkout/paymentMethod'] === 'br-pix'" />
     <BoletoPaymentForm v-if="$store.getters['checkout/paymentMethod'] === 'br-boleto'" />
+    <PaymentDetails />
     <SecurityNotice />
   </Card>
 </template>
