@@ -16,6 +16,11 @@ import PaymentCardForm from '@/components/PaymentCardForm.vue';
 
       <AddressCardForm />
       <PaymentCardForm />
+
+      <div class="flex items-center justify-center gap-6 pt-8">
+        <a href="#" class="text-indigo-500">Política de Privacidade</a>
+        <div>Esta compra será processada pela <b>Pay T</b></div>
+      </div>
     </div>
   </section>
 </template>

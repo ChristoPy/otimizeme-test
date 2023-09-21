@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { reactive, watch, nextTick } from 'vue';
+import { reactive, watch } from 'vue';
+import store from '@/store'
 
 import maybeGetZipCode from '@/services/viacep';
 
@@ -39,6 +40,10 @@ watch(() => formData.zipCode, async () => {
   if (result.neighborhood) {
     formData.neighborhood = result.neighborhood
   }
+})
+
+watch(formData, () => {
+  store.dispatch('checkout/setShippingDetails', formData)
 })
 </script>
 

@@ -8,7 +8,7 @@ import store from '@/store'
 import Dropdown from './Dropdown.vue';
 
 const numberOfInstallments = 10;
-const totalPrice = store.getters['cart/totalPrice'];
+const totalPrice = store.getters['checkout/totalPrice'];
 
 const dropdownOptions = ref<DropdownOption[]>(
   Array.from({ length: numberOfInstallments }, (_, i) => ({

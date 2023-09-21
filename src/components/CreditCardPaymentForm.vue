@@ -40,7 +40,7 @@ onMounted(() => {
   <div class="flex gap-4">
     <form id="form">
       <BaseInput id="cardNumber" label="Número do cartão" placeholder="Digite somente os números" type="tel" />
-      <BaseInput id="name" label="Titular do cartão" placeholder="Digite o nome impresso no cartão" type="email" />
+      <BaseInput id="name" label="Titular do cartão" placeholder="Digite o nome impresso no cartão" type="name" />
       <MaskedInput id="taxId" label="CPF/CNPJ do titular" placeholder="Para a emissão da nota fisal" type="tel"
         :mask="['###.###.###-##', '##.###.###/####-##']" :maxLength="18" />
 
