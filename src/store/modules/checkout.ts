@@ -79,41 +79,47 @@ const actions: ActionTree<RootState, RootState> = {
   setPaymentMethod({ state, commit }, type: PaymentMethod) {
     commit('SET_PAYMENT_METHOD', type)
   },
-  setShippingDetails({ state, commit}, shipping: State['shipping']) {
+  setShippingDetails({ state, commit }, shipping: State['shipping']) {
     commit('SET_SHIPPING_DETAILS', shipping)
   },
-  setPaymentDetails({ state, commit}, shipping: Card) {
+  setPaymentDetails({ state, commit }, shipping: Card) {
     commit('SET_PAYMENT_DETAILS', shipping)
   },
-  setTotalPrice({ state, commit}, total: number) {
+  setTotalPrice({ state, commit }, total: number) {
     commit('SET_TOTAL_PRICE', total)
   },
-  setTaxId({ state, commit}, total: number) {
+  setTaxId({ state, commit }, total: number) {
     commit('SET_TAX_ID', total)
   },
-  fillAddress({state, commit}) {
+  fillAddress({ state, commit }) {
     if (!state.fillAddress) {
       console.log('FillAddress', state)
       commit('SET_FLAG', 'fillAddress')
     }
   },
-  addToCart({state, commit}) {
+  addToCart({ state, commit }) {
     if (!state.addToCart) {
       console.log('FillAddress', state)
       commit('SET_FLAG', 'addToCart')
     }
   },
-  initiateCheckout({state, commit}) {
+  initiateCheckout({ state, commit }) {
     if (!state.initiateCheckout) {
       console.log('InitiateCheckout', state)
       commit('SET_FLAG', 'initiateCheckout')
     }
   },
-  addPaymentInfo({state, commit}) {
+  addPaymentInfo({ state, commit }) {
     if (!state.addPaymentInfo) {
       console.log('AddPaymentInfo', state)
       commit('SET_FLAG', 'addPaymentInft')
     }
+  },
+  purchase({ state }) {
+    console.log('Purchase', state)
+  },
+  purchaseFail({ state }) {
+    console.log('PurchaseFail', state)
   }
 }
 

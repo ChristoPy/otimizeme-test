@@ -8,7 +8,7 @@ import PaymentCardForm from '@/components/PaymentCardForm.vue';
     <div class="container mx-auto max-w-5xl">
       <h1 class="font-bold text-4xl my-4 py-8">Finalizar Compra</h1>
 
-      <form @submit.prevent="() => {}">
+      <form @submit.prevent="$store.dispatch('checkout/purchase')" @invalid="$store.dispatch('checkout/purchaseFail')">
         <AddressCardForm />
         <PaymentCardForm />
       </form>

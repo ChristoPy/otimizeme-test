@@ -45,6 +45,10 @@ onMounted(() => {
 
 watch(formData, () => {
   store.dispatch('checkout/setPaymentDetails', formData)
+
+  if (formData.cvv && formData.expiry && formData.holder && formData.number && formData.taxId) {
+    store.dispatch('checkout/addPaymentInfo')
+  }
 })
 </script>
 
