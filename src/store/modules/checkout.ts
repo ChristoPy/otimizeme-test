@@ -2,6 +2,15 @@ import type { ActionTree, GetterTree } from "vuex"
 
 type PaymentMethod = 'credit-card' | 'br-pix' | 'br-boleto'
 
+interface Card {
+  number: string
+  holder: string
+  taxId: string
+  expiry: string
+  cvv: string
+  installments: number
+}
+
 interface State {
   total: number,
   shipping: {
@@ -18,14 +27,7 @@ interface State {
   }
   payment: {
     method: PaymentMethod
-    card?: {
-      number: string
-      holder: string
-      taxId: string
-      expiry: string
-      cvv: string
-      installments: number
-    }
+    card?: Card
   }
 }
 
@@ -71,6 +73,9 @@ const actions: ActionTree<RootState, RootState> = {
   setShippingDetails({ state, commit}, shipping: State['shipping']) {
     commit('SET_SHIPPING_DETAILS', shipping)
   },
+  setPaymentDetails({ state, commit}, shipping: Card) {
+    commit('SET_PAYMENT_DETAILS', shipping)
+  },
   setTotalPrice({ state, commit}, total: number) {
     commit('SET_TOTAL_PRICE', total)
   }
@@ -82,6 +87,9 @@ const mutations = {
   },
   SET_SHIPPING_DETAILS(state: RootState, shipping: State['shipping']) {
     state.shipping = { ...state.shipping, ...shipping };
+  },
+  SET_PAYMENT_DETAILS(state: RootState, card: Card) {
+    state.payment.card = { ...state.payment.card, ...card };
   },
   SET_TOTAL_PRICE(state: RootState, total: number) {
     state.total = total;
