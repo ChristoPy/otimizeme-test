@@ -32,10 +32,10 @@ const methods = [
     <div class="flex items-center justify-center gap-8 mb-12">
       <div v-for="method in methods"
         class="p-4 bg-white rounded-xl flex flex-col justify-center items-center gap-2 border cursor-pointer w-1/3"
-        :class="{ 'border-gray-300': $store.getters['checkout/paymentMethod'] !== method.name, 'border-gray-500': $store.getters['checkout/paymentMethod'] === method.name, 'hover:border-gray-500': $store.getters['checkout/paymentMethod'] !== method.name }"
+        :class="{ 'border-gray-300': $store.getters['checkout/paymentMethod'] !== method.name, 'border-indigo-500': $store.getters['checkout/paymentMethod'] === method.name, 'bg-indigo-100': $store.getters['checkout/paymentMethod'] === method.name, 'hover:bg-indigo-50': $store.getters['checkout/paymentMethod'] !== method.name }"
         @click="() => setPaymentMethod(method.name)">
         <img :src="method.img" />
-        <b class="font-medium">{{ method.label }}</b>
+        <b class="font-medium text-gray-500">{{ method.label }}</b>
       </div>
     </div>
   </div>
